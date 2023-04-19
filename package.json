@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "bcrypt": "^5.0.1",
+        "sequelize": "^6.16.2",
+        "uuid": "^8.3.2"
+    }
+}

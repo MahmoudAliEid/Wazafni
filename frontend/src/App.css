@@ -1,0 +1,17 @@
+#navbar {
+    font-family: 'Merriweather', serif !important;
+}
+
+.TYPING {
+    font-size: 50px;
+}
+
+.body {
+    background-image: linear-gradient(to right top, #051937, #004d7a, #00bf72, #a8eb12)
+}
+
+.Toolbar {
+    box-shadow: "0px 0px";
+    background-image: linear-gradient(to right top, #14d8c7, #00d2da, #00cae8, #28c1ef, #59b7f0, #51b4ec, #48b2e8, #3fafe4, #00b2d6, #00b3bf, #00b1a1, #2cae80);
+    color: #334B4A;
+}
