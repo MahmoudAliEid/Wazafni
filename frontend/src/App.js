@@ -18,117 +18,89 @@ import AcceptedApplicants from "./component/Admin/AcceptedApplicants";
 import Welcome, { ErrorPage } from "./component/Welcome";
 
 const useStyles = makeStyles((theme) => ({
-    body: {
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "98vh",
-        paddingTop: "64px",
-        boxSizing: "border-box",
-        width: "100%",
-        backgroundColor: "#fefefe",
-    },
+  body: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    minHeight: "98vh",
+    paddingTop: "64px",
+    boxSizing: "border-box",
+    width: "100%",
+    backgroundColor: "#fefefe",
+  },
 }));
 
 export const SetPopupContext = createContext();
 
 function App() {
-    const classes = useStyles();
-    const [popup, setPopup] = useState({
-        open: false,
-        severity: "",
-        message: "",
-    });
-    return ( <
-        BrowserRouter >
-        <
-        SetPopupContext.Provider value = { setPopup } >
-        <
-        Grid container direction = "column" >
-        <
-        Grid item xs >
-        <
-        Navbar id = "navbar" / >
-        <
-        /Grid> <
-        Grid item className = { classes.body } >
-        <
-        Switch >
-        <
-        Route exact path = "/" >
-        <
-        Welcome / >
-        <
-        /Route> <
-        Route exact path = "/login" >
-        <
-        Login / >
-        <
-        /Route> <
-        Route exact path = "/signup" >
-        <
-        Signup / >
-        <
-        /Route> <
-        Route exact path = "/logout" >
-        <
-        Logout / >
-        <
-        /Route> <
-        Route exact path = "/home" >
-        <
-        Home / >
-        <
-        /Route> <
-        Route exact path = "/profile" > { userType() === "Admin" ? < AdminProfile / > : < Profile / > } <
-        /Route> <
-        Route exact path = "/addjob" >
-        <
-        CreateJobs / >
-        <
-        /Route> <
-        Route exact path = "/myjobs" >
-        <
-        MyJobs / >
-        <
-        /Route> <
-        Route exact path = "/job/applications/:jobId" >
-        <
-        JobApplications / >
-        <
-        /Route> <
-        Route exact path = "/applications" >
-        <
-        Applications / >
-        <
-        /Route> <
-        Route exact path = "/employees" >
-        <
-        AcceptedApplicants / >
-        <
-        /Route>
+  const classes = useStyles();
+  const [ popup, setPopup ] = useState( {
+    open: false,
+    severity: "",
+    message: "",
+  } );
+  return (
+    <BrowserRouter>
+      <SetPopupContext.Provider value={ setPopup }>
+        <Grid container direction="column">
+          <Grid item xs>
+            <Navbar id="navbar" />
+          </Grid>
+          <Grid item className={ classes.body }>
+            <Switch>
+              <Route exact path="/">
+                <Welcome />
+              </Route>
+              <Route exact path="/login">
+                <Login />
+              </Route>
+              <Route exact path="/signup">
+                <Signup />
+              </Route>
+              <Route exact path="/logout">
+                <Logout />
+              </Route>
+              <Route exact path="/home">
+                <Home />
+              </Route>
+              <Route exact path="/profile">
+                { userType() === "Admin" ? <AdminProfile /> : <Profile /> }
+              </Route>
+              <Route exact path="/addjob">
+                <CreateJobs />
+              </Route>
+              <Route exact path="/myjobs">
+                <MyJobs />
+              </Route>
+              <Route exact path="/job/applications/:jobId">
+                <JobApplications />
+              </Route>
+              <Route exact path="/applications">
+                <Applications />
+              </Route>
+              <Route exact path="/employees">
+                <AcceptedApplicants />
+              </Route>
 
-        <
-        ErrorPage / >
-        <
-        /Switch> <
-        /Grid> <
-        /Grid> <
-        MessagePopup open = { popup.open }
-        setOpen = {
-            (status) =>
+              <ErrorPage />
+            </Switch>
+          </Grid>
+        </Grid>
+        <MessagePopup
+          open={ popup.open }
+          setOpen={ ( status ) =>
             setPopup({
-                ...popup,
-                open: status,
+              ...popup,
+              open: status,
             })
-        }
-        severity = { popup.severity }
-        message = { popup.message }
-        /> <
-        /SetPopupContext.Provider> <
-        /BrowserRouter>
-    );
+          }
+          severity={ popup.severity }
+          message={ popup.message }
+        />
+      </SetPopupContext.Provider>
+    </BrowserRouter>
+  );
 }
 
 export default App;
