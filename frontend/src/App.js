@@ -16,8 +16,9 @@ import Home from "./component/Home";
 import JobApplications from "./component/Admin/JobApplications";
 import AcceptedApplicants from "./component/Admin/AcceptedApplicants";
 import Welcome, { ErrorPage } from "./component/Welcome";
+import { Sugar } from 'react-preloaders2';
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles( ( theme ) => ( {
   body: {
     display: "flex",
     flexDirection: "column",
@@ -42,6 +43,7 @@ function App() {
   } );
   return (
     <BrowserRouter>
+      <Sugar background=" linear-gradient(to right top, #051937, #004d7a, #00bf72, #a8eb12)" time={ 2000 } />
       <SetPopupContext.Provider value={ setPopup }>
         <Grid container direction="column">
           <Grid item xs>
